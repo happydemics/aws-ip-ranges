@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "dry/cli"
+
+require "aws_ip_ranges"
+
+module AwsIpRanges
+  module CLI
+    # rubocop:disable Style/Documentation
+    module Commands
+      extend Dry::CLI::Registry
+
+      class Version < Dry::CLI::Command
+        desc "Print version"
+
+        def call(*)
+          puts AwsIpRanges::VERSION
+        end
+      end
+
+      class List < Dry::CLI::Command
+        desc "List all AWS IP ranges"
+
+        option :only_ipv6, type: :boolean, default: false, desc: "Whether to include only IPv6 ranges."
+        option :only_ipv4, type: :boolean, default: false, desc: "Whether to include only IPv4 ranges."
+        option :service, type: :array, default: nil, desc: "Which services to include. By default, includes all."
+        option :region, type: :array, default: nil, desc: "Which regions to include. By default, includes all."
+
+        example [
+          "                                            # Prints all AWS IP ranges",
+          "--only-ipv4                                 # Prints all AWS IPv4 ranges",
+          "--only-ipv6 --service=cloudfront,global     # Prints AWS Cloudfront and Global IPv6 ranges",
+          "--only-ipv6 --service=s3 --region=eu-west-1 # Prints AWS S3 IPv6 ranges in the eu-west-1 region"
+        ]
+
+        def call(only_ipv6: nil, only_ipv4: nil, service: nil, region: nil, **)
+          check_ip_version(only_ipv4, only_ipv6)
+
+          base_url = ENV["AWS_IP_RANGE_HOST_URL"] || AwsIpRanges::DEFAULT_HOST_URL
+          ips = AwsIpRanges.fetch(only_ipv6: only_ipv6, only_ipv4: only_ipv4, service: service, region: region,
+                                  base_url: base_url)
+          ips.each do |ip|
+            puts "#{ip}/#{ip.prefix}"
+          end
+        rescue StandardError => e
+          error 2, "Failed to load IP ranges: #{e}"
+        end
+
+        private
+
+        def check_ip_version(only_ipv4, only_ipv6)
+          return if !only_ipv4 || !only_ipv6
+
+          error(1, '"aws-ip-ranges list" cannot be called with both --only-ipv4 and --only-ipv6 options')
+        end
+
+        def error(status, msg)
+          warn "ERROR: #{msg}"
+          exit status
+        end
+      end
+
+      register "version", Version, aliases: ["v", "-v", "--version"]
+      register "list",    List
+    end
+    # rubocop:enable Style/Documentation
+  end
+end
+
+Dry::CLI.new(AwsIpRanges::CLI::Commands).call
