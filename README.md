@@ -1,5 +1,8 @@
 # `aws-ip-ranges`
 
+[![Gem Version](https://badge.fury.io/rb/aws-ip-ranges.svg)](https://badge.fury.io/rb/aws-ip-ranges)
+![Workflow](https://github.com/happydemics/aws-ip-ranges/actions/workflows/main.yaml/badge.svg)
+
 Retrieve AWS IP ranges with ease.
 
 ## Installation
