@@ -1,0 +1,13 @@
+name: Semver label checker
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+jobs:
+  semver-label-check:
+    uses: happydemics/gh-reusable-workflows/.github/workflows/semver-label-checker.yml@main
+    secrets: inherit
