@@ -7,6 +7,9 @@ on:
       - labeled
       - unlabeled
 jobs:
+  add-semver-label:
+    uses: happydemics/gh-reusable-workflows/.github/workflows/add-label.yml@main
+    secrets: inherit
   semver-label-check:
     uses: happydemics/gh-reusable-workflows/.github/workflows/semver-label-checker.yml@main
     secrets: inherit
