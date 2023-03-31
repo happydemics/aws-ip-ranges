@@ -6,6 +6,10 @@ on:
       - reopened
       - labeled
       - unlabeled
+  workflow_run:
+    workflows: [Add Semver Label]
+    types:
+      - completed
 jobs:
   semver-label-check:
     uses: happydemics/gh-reusable-workflows/.github/workflows/semver-label-checker.yml@main
