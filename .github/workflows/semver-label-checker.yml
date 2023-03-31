@@ -2,7 +2,6 @@ name: Semver label checker
 on:
   pull_request:
     types:
-      - opened
       - synchronize
       - reopened
       - labeled

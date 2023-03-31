@@ -1,0 +1,11 @@
+name: Add Semver Label
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  add-semver-label:
+    uses: happydemics/gh-reusable-workflows/.github/workflows/add-label.yml@main
+    secrets: inherit
+
