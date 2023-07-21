@@ -4,7 +4,7 @@ PATH
     aws-ip-ranges (0.1.0)
       dry-cli (~> 0.7.0)
       faraday (~> 2.0)
-      faraday-retry (~> 1.0)
+      faraday-retry (>= 1.0, < 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -61,6 +61,7 @@ GEM
     webrick (1.7.0)
 
 PLATFORMS
+  arm64-darwin-22
   x86_64-darwin-20
   x86_64-linux
 
