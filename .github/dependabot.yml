@@ -4,7 +4,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    reviewers:
+      - happydemics/devops
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "weekly"
+    reviewers:
+      - happydemics/backend
