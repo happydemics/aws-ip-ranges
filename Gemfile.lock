@@ -26,7 +26,7 @@ GEM
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
-    method_source (1.0.0)
+    method_source (1.1.0)
     minitest (5.25.5)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
@@ -37,12 +37,12 @@ GEM
       ast (~> 2.4.1)
       racc
     prism (1.5.1)
-    pry (0.13.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-byebug (3.9.0)
+    pry-byebug (3.10.1)
       byebug (~> 11.0)
-      pry (~> 0.13.0)
+      pry (>= 0.13, < 0.15)
     racc (1.8.1)
     rack (3.2.1)
     rack-protection (4.1.1)
@@ -96,7 +96,7 @@ PLATFORMS
 DEPENDENCIES
   aws-ip-ranges!
   minitest (~> 5.22)
-  pry-byebug (~> 3.9)
+  pry-byebug (~> 3.10)
   rack (~> 3)
   rackup (~> 2.2)
   rake (~> 13.0)
