@@ -5,7 +5,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in aws-ip-ranges.gemspec
 gemspec
 
-gem "minitest", "~> 5.22"
+gem "minitest", "~> 5.26"
 gem "rack", "~> 3"
 gem "rackup", "~> 2.2"
 
