@@ -1,1 +1,6 @@
 /.github/ @happydemics/devops
+.tool-versions @happydemics/devops
+
+Gemfile @happydemics/backend
+Gemfile.lock @happydemics/backend
+*.gemspec @happydemics/backend
