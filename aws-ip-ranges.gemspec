@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "dry-cli", "~> 0.7.0"
-  spec.add_dependency "faraday", "~> 2.0"
+  spec.add_dependency "faraday", "~> 2.14", ">= 2.14.3"
   spec.add_dependency "faraday-retry", ">= 1.0", "< 3.0"
   spec.metadata["rubygems_mfa_required"] = "true"
 end

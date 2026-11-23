@@ -11,7 +11,6 @@ gem "rackup", "~> 2.2"
 
 gem "rake", "~> 13.0"
 gem "rubocop", "~> 1.81"
-gem "sinatra", "~> 4"
 gem "webrick", "~> 1.9"
 
 gem "pry-byebug", "~> 3.9"
